@@ -152,14 +152,18 @@ namespace FoodTruckPlus.Controllers
         {
             if (ModelState.IsValid)
             {
+
+
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
 
                     //Temp Code
-                    //var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext);
-
+                    //var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
+                    //var roleManager = new RoleManager<IdentityRole>(roleStore);
+                    //await roleManager.CreateAsync(new IdentityRole("FoodTruckAdmin"));
+                    //await UserManager.AddToRoleAsync(user.Id, "FoodTruckAdmin");
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771

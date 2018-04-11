@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FoodTruckPlus.Models
 {
@@ -11,5 +12,11 @@ namespace FoodTruckPlus.Models
         public string ItemName { get; set; }
         public string Description { get; set; }
         public double Price { get; set; }
+        
+            [ForeignKey("FullMenu")]
+        public int FullMenuId { get; set; }
+
+        public FullMenu FullMenu { get; set; }
+     
     }
 }

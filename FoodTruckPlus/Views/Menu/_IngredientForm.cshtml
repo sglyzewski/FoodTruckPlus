@@ -1,0 +1,32 @@
+﻿@model FoodTruckPlus.ViewModels.MenuCreationViewModel
+
+<div class="row">
+    <div class="col-sm-4">
+        <h3>Ingredients</h3>
+        @foreach (var el in Model.Ingredients)
+        {<div>
+                @el.IngredientItem
+            </div>
+        }
+    </div>
+
+    <div class=" col-sm-8">
+        @using (Html.BeginForm("AddIngredient", "Menu", Model))
+        {
+            <div class="form-group">
+                @Html.LabelFor(Model => Model.Ingredient.IngredientItem)
+                @Html.TextBoxFor(Model => Model.Ingredient.IngredientItem, new { @class = "form-control" })
+            </div>
+
+            @Html.HiddenFor(Model => Model.Ingredients)
+            @Html.HiddenFor(Model => Model.FullMenu.Id)
+            @Html.HiddenFor(Model => Model.MenuItems)
+            @Html.HiddenFor(Model => Model.MenuItem)
+            <button type="submit" class="btn btn-primary">Add Ingredient</button>
+
+        }
+
+    </div>
+
+
+</div>

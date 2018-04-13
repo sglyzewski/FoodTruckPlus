@@ -1,0 +1,25 @@
+﻿@model FoodTruckPlus.ViewModels.MenusViewModel
+@{
+    ViewBag.Title = "Menus";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Your Menus</h2>
+
+@foreach (var el in Model.FullMenus)
+{
+    <div>
+        @Html.ActionLink(el.MenuTitle, "MenuForm", "Menu", new { id = el.Id }, new { @class = "btn btn-primary" })
+    </div>
+}
+<h2>Start A New Menu</h2>
+@using (Html.BeginForm("CreateMenu", "Menu"))
+{
+    @Html.LabelFor(Model => Model.FullMenu.MenuTitle)
+    @Html.TextBoxFor(Model => Model.FullMenu.MenuTitle)
+
+  <button type = "submit" class="btn btn-primary">Add Menu</button>
+}
+
+

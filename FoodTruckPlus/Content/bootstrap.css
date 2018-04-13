@@ -7920,6 +7920,18 @@ button.close {
     display: block !important;
 }
 
+.editableBox {
+    width: 75px;
+    height: 30px;
+}
+
+.timeTextBox {
+    width: 54px;
+    margin-left: -78px;
+    height: 25px;
+    border: none;
+}
+
 .invisible {
     visibility: hidden;
 }

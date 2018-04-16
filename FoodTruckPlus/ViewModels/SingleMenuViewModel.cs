@@ -10,5 +10,6 @@ namespace FoodTruckPlus.ViewModels
     {
         public FullMenu FullMenu { get; set; }
         public IEnumerable<MenuItem> MenuItemsForFullMenu {get; set;}
+        public IEnumerable<Ingredient> Ingredients { get; set; }
     }
 }

@@ -102,7 +102,20 @@ namespace FoodTruckPlus.Controllers
             return RedirectToAction("EditMenuItem", "Menu", new { id = menuItem.Id });
         }
       
+        public ActionResult Menu(int id)
+        {
+            var fullMenu = _context.FullMenus.SingleOrDefault(m => m.Id == id);
+            var menuItems = _context.MenuItems.Where(i => i.FullMenuId == fullMenu.Id).ToList();
+            var ingredients = _context.Ingredients.ToList();
+            var viewModel = new SingleMenuViewModel()
+            {
+                FullMenu = fullMenu,
+                MenuItemsForFullMenu = menuItems,
+                Ingredients = ingredients
+            };
 
+            return View("Menu", viewModel);
+        }
         public ActionResult SaveMenuItem(MenuCreationViewModel viewModel)
         {
             //viewModel.MenuItem.FullMenuId = viewModel.FullMenu.Id;
@@ -161,6 +174,21 @@ namespace FoodTruckPlus.Controllers
             return View("EditMenuItem", viewModel);
         }
 
+        public ActionResult DeleteMenu(int id)
+        {
+            var menu = _context.FullMenus.SingleOrDefault(m => m.Id == id);
+            _context.FullMenus.Remove(menu);
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (DbEntityValidationException e)
+            {
+                Console.WriteLine(e);
+            }
+            return RedirectToAction("Menus");
+
+        }
 
 
         public ActionResult AddIngredient(MenuItemViewModel viewModel)

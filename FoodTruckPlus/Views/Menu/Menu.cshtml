@@ -1,8 +1,47 @@
-﻿
+﻿@model FoodTruckPlus.ViewModels.SingleMenuViewModel
 @{
+
     ViewBag.Title = "Menu";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Menu</h2>
+<h2>Menu : @Model.FullMenu.MenuTitle</h2>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Menu Item</th>
+            <th>Description</th>
+            <th>Ingredients</th>
+            <th>Price</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var el in Model.MenuItemsForFullMenu)
+        {
+            <tr>
+                <td>@el.ItemName</td>
+                <td>@el.Description</td>
+                <td>
+                    <ul>
+                        @foreach (var ingredient in Model.Ingredients.Where(i => i.MenuItemId == el.Id))
+        {
+
+                <li>
+                    @ingredient.IngredientItem
+                </li>
+}
+
+                    </ul>
+                </td>
+                <td>@String.Format("{0:C}", el.Price)</td>
+
+               
+            </tr>
+        }
+    </tbody>
+
+</table>
 

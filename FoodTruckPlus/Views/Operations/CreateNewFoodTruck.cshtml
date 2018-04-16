@@ -1,0 +1,53 @@
+﻿@model FoodTruckPlus.ViewModels.CreateFoodTruckViewModel
+@{
+    ViewBag.Title = "CreateNewFoodTruck";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create New Food Truck</h2>
+
+<div>
+    @using (Html.BeginForm("CreateFoodTruck", "Operations"))
+    {
+        <div class="form-group">
+            @Html.LabelFor(Model => Model.FoodTruck.Name)
+            @Html.TextBoxFor(Model => Model.FoodTruck.Name, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(Model => Model.FoodTruck.Email)
+            @Html.TextBoxFor(Model => Model.FoodTruck.Email, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(Model => Model.Address.AddressLine1)
+            @Html.TextBoxFor(Model => Model.Address.AddressLine1, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(Model => Model.Address.AddressLine2)
+            @Html.TextBoxFor(Model => Model.Address.AddressLine2, new { @class = "form-control" })
+
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(Model => Model.Address.City)
+            @Html.TextBoxFor(Model => Model.Address.City, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(Model => Model.Address.State)
+            @Html.TextBoxFor(Model => Model.Address.State, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(Model => Model.Address.Zipcode)
+            @Html.TextBoxFor(Model => Model.Address.Zipcode, new { @class = "form-control" })
+        </div>
+
+        <div class="col-sm-4">
+            <button type="submit" class="btn btn-primary">Save Truck</button>
+        </div>
+
+    }
+</div>

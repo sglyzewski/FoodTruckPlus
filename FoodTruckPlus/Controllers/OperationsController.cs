@@ -25,16 +25,40 @@ namespace FoodTruckPlus.Controllers
 
         public ActionResult CreateNewFoodTruck()
         {
-            var viewModel = new CreateFoodTruckViewModel();
+
+            var foodTruck = new FoodTruck();
+            var address = new Address();
+            
+            var viewModel = new CreateFoodTruckViewModel()
+            {
+                FoodTruck = foodTruck,
+                Address = address
+            };
 
             return View("CreateNewFoodTruck", viewModel);
         }
 
         public ActionResult CreateFoodTruck(CreateFoodTruckViewModel viewModel)
         {
-            viewModel.FoodTruck.AddressId = viewModel.Address.Id;
+          
+            
             _context.Addresses.Add(viewModel.Address);
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (DbEntityValidationException e)
+            {
+                Console.WriteLine(e);
+            }
+            var addressInDb = _context.Addresses.SingleOrDefault(a => a.AddressLine1 == viewModel.Address.AddressLine1 && a.AddressLine2 == viewModel.Address.AddressLine2
+            && a.City == viewModel.Address.City && a.State == viewModel.Address.State && a.Zipcode == viewModel.Address.Zipcode
+            && a.Country == viewModel.Address.Country
+         );
+            viewModel.FoodTruck.AddressId = addressInDb.Id;
+            viewModel.FoodTruck.FullMenuId = 1;
             _context.FoodTrucks.Add(viewModel.FoodTruck);
+            
 
             try
             {
@@ -44,7 +68,6 @@ namespace FoodTruckPlus.Controllers
             {
                 Console.WriteLine(e);
             }
-
             return View("Index");
         }
     }

@@ -13,7 +13,7 @@ namespace FoodTruckPlus.Models
         public string Description { get; set; }
         public double Price { get; set; }
         
-            [ForeignKey("FullMenu")]
+        [ForeignKey("FullMenu")]
         public int FullMenuId { get; set; }
 
         public FullMenu FullMenu { get; set; }

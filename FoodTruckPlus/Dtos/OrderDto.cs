@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
+using FoodTruckPlus.Models;
+using System.Web;
 
-namespace FoodTruckPlus.Models
+namespace FoodTruckPlus.Dtos
 {
-    public class Order
+    public class OrderDto
     {
         public int Id { get; set; }
         public double Price { get; set; }
@@ -13,7 +17,8 @@ namespace FoodTruckPlus.Models
         public DateTime TimePurchased { get; set; }
         public DateTime TimeDesiredReady { get; set; }
         public string MenuItems { get; set; }
+        public int? MinutesUntilReady {get; set;}
 
-        
+
     }
 }

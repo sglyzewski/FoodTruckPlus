@@ -5,6 +5,13 @@ using System.Collections.Generic;
 using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web.Mvc;
+using FoodTruckPlus.Dtos;
+using FoodTruckPlus.Controllers.Api;
+using AutoMapper;
+using System.Net.Http;
+using System.Web.Http;
+
+using System.Web.Routing;
 
 namespace FoodTruckPlus.Controllers
 {
@@ -38,6 +45,12 @@ namespace FoodTruckPlus.Controllers
             return View("CreateNewFoodTruck", viewModel);
         }
 
+        public ActionResult Orders()
+        {
+            var controller = new OrdersController();
+            var viewmodel = controller.GetOrders().ToList();
+            return View("Orders", viewmodel);
+        }
         public ActionResult CreateFoodTruck(CreateFoodTruckViewModel viewModel)
         {
           

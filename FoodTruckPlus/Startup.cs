@@ -1,5 +1,7 @@
 ﻿using Microsoft.Owin;
 using Owin;
+using System.Net.WebSockets;
+
 
 [assembly: OwinStartupAttribute(typeof(FoodTruckPlus.Startup))]
 namespace FoodTruckPlus
@@ -8,6 +10,7 @@ namespace FoodTruckPlus
     {
         public void Configuration(IAppBuilder app)
         {
+
             ConfigureAuth(app);
         }
     }

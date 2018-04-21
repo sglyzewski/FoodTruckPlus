@@ -9,5 +9,8 @@ namespace FoodTruckPlus.Models
     {
         public int Id { get; set; }
         public string MenuTitle { get; set; }
+
+        public List<MenuItem> MenuItems { get; set; }
+
     }
 }

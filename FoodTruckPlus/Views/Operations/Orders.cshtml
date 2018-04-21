@@ -52,18 +52,21 @@
     <script>
 
         $(document).ready(function () {
-            $("#orders .js-delete").on("click", function () {
-                if (confirm("Are you sure you want to send this?")) {
+
+            $("#orders").DataTable();
+
+            $("#orders").on("click", ".js-delete", function () {
+                var button = $(this);
+               
                     $.ajax({
-                        url: "/api/orders" + $(this).attr("data-order-id"),
+                        url: "/api/orders" + button.attr("data-order-id"),
                         method: "DELETE",
                         success: function () {
-                            console.log("Success");
-
+                            button.parents("tr").remove();
                         }
 
                     });
-                }
+                
             });
         });
 

@@ -1,0 +1,45 @@
+﻿@model FoodTruckPlus.ViewModels.OrdersViewModel
+@{
+    ViewBag.Title = "PlaceOrder";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Place An Order</h2>
+
+
+@using (Html.BeginForm("MakeOrder", "Clients", FormMethod.Post, new { id = "order" }))
+{
+    <div class="form-group">
+
+        
+        @Html.DropDownListFor(Model => Model.MenuItems, new SelectList(Model.MenuItems, "Id", "ItemName"), "Select Menu Item", new { @class = "form-control" })
+      
+    </div>
+
+    <button type="submit" class="btn btn=primary" id="placeorder">Place Order</button>
+}
+
+<script>
+
+    $(document).ready(function () {
+        var currentDate = Date.now();
+        //function will be called on button click having id btnsave
+        $("#placeorder").click(function () {
+            $.ajax(
+                {
+                    type: "POST", //HTTP POST Method
+                    url: "/api/orders", // Controller/View
+                    data: { //Passing data
+
+                        Name: $("#txtName").val(), //Reading text box values using Jquery
+                        City: $("#txtAddress").val(),
+                        Address: $("#txtcity").val()
+                    }
+
+                });
+
+        });
+    });
+
+</script>
+

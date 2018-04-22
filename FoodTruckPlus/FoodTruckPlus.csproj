@@ -276,6 +276,7 @@
     <Compile Include="Secrets\Keys.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CreateFoodTruckViewModel.cs" />
+    <Compile Include="ViewModels\EditUserInfoViewModel.cs" />
     <Compile Include="ViewModels\FoodTruckIndex.cs" />
     <Compile Include="ViewModels\MapViewModel.cs" />
     <Compile Include="ViewModels\MenuCreationViewModel.cs" />
@@ -575,6 +576,7 @@
     <Content Include="Views\Clients\MyFoodTrucks.cshtml" />
     <Content Include="Views\Clients\PlaceOrder.cshtml" />
     <Content Include="Views\Clients\OrderConfirmation.cshtml" />
+    <Content Include="Views\Clients\EditUserInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

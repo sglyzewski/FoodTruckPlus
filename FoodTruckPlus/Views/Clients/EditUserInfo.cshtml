@@ -1,0 +1,50 @@
+﻿@model FoodTruckPlus.ViewModels.EditUserInfoViewModel
+@{
+    ViewBag.Title = "EditUserInfo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit User Info</h2>
+
+@Html.BeginForm("SaveUserInfo", "Clients") {
+<div class="form-group">
+    @Html.LabelFor(Model => Model.User.FirstName)
+    @Html.TextBoxFor(Model => Model.User.FirstName, new { @class = "form-control" })
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(Model => Model.User.LastName)
+    @Html.TextBoxFor(Model => Model.User.LastName, new { @class = "form-control" })
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(Model => Model.Address.AddressLine1)
+    @Html.TextBoxFor(Model => Model.Address.AddressLine1, new { @class = "form-control" })
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(Model => Model.Address.AddressLine2)
+    @Html.TextBoxFor(Model => Model.Address.AddressLine2, new { @class = "form-control" })
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(Model => Model.Address.City)
+    @Html.TextBoxFor(Model => Model.Address.City, new { @class = "form-control" })
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(Model => Model.Address.State)
+    @Html.TextBoxFor(Model => Model.Address.State, new { @class = "form-control" })
+
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(Model => Model.Address.Zipcode)
+    @Html.TextBoxFor(Model => Model.Address.Zipcode, new { @class = "form-control" })
+</div>
+
+<button type="submit" class="btn btn-primary">Save</button>
+
+}
+}
+

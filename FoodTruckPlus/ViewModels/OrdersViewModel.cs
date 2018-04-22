@@ -15,7 +15,10 @@ namespace FoodTruckPlus.ViewModels
 
         public string LastName { get; set; }
 
+        public List<MenuItem> Cart { get; set; }
+       
         public IEnumerable<MenuItem> MenuItems { get; set; }
+        public int TemporaryItemId { get; set; }
 
     }
 }

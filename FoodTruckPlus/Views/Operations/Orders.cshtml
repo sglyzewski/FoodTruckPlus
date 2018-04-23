@@ -1,6 +1,6 @@
-﻿@model IEnumerable<FoodTruckPlus.Dtos.OrderDto>
+﻿@model FoodTruckPlus.ViewModels.SeeAllOrdersViewModel
 @{
-                /**/
+               
 
                 ViewBag.Title = "Orders";
                 Layout = "~/Views/Shared/_Layout.cshtml";
@@ -11,7 +11,7 @@
 <table id="orders" class="table table-bordered table-hover">
     <thead>
         <tr>
-            <th>Number</th>
+            <th>Name</th>
             <th>Price</th>
             <th>Time Purchased</th>
             <th>Time Desired Ready</th>
@@ -20,10 +20,14 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var order in Model)
+        @foreach (var order in Model.Orders)
         {
+            
             <tr>
-                <td>@order.Id</td>
+                <td>
+                    @Model.UserInfos.SingleOrDefault(s => s.Id == order.UserInfoId).FirstName
+                                @Model.UserInfos.SingleOrDefault(s => s.Id == order.UserInfoId).LastName
+                            </td>
                 <td>
                                 @String.Format("{0:C}", order.Price)
                             </td>

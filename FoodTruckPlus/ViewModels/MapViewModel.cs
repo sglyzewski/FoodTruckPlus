@@ -13,6 +13,8 @@ namespace FoodTruckPlus.ViewModels
 
         public string Longitude { get; set; }
 
+        public string Address { get; set; }
+
         public string apiKey = Keys.googleApiKey;
     }
 }

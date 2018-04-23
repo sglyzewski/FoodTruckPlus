@@ -1,8 +1,4 @@
-﻿@model FoodTruckPlus.ViewModels.MapViewModel
-@{
-    ViewBag.Title = "Map";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+﻿@ FoodTruckPlus.ViewModels.MapViewModel
 
 <h2>Map</h2>
 <h2>Lat: @Model.Latitude</h2>
@@ -33,7 +29,6 @@
       }
     </script>
     <script async defer
-            src=@String.Format("https://maps.googleapis.com/maps/api/js?key={0}&callback=initMap", @Model.apiKey)
-            >
+            src=@String.Format("https://maps.googleapis.com/maps/api/js?key={0}&callback=initMap", @Model.apiKey)>
     </script>
 </body>

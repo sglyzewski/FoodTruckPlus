@@ -239,6 +239,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\API\OrdersController.cs" />
     <Compile Include="Controllers\ClientsController.cs" />
+    <Compile Include="Controllers\EmailsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MapsController.cs" />
@@ -261,9 +262,30 @@
     <Compile Include="Migrations\201804191526510_SeedOrders.Designer.cs">
       <DependentUpon>201804191526510_SeedOrders.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804230049138_InitalModel.cs" />
+    <Compile Include="Migrations\201804230049138_InitalModel.Designer.cs">
+      <DependentUpon>201804230049138_InitalModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804230112216_InitalModel1.cs" />
+    <Compile Include="Migrations\201804230112216_InitalModel1.Designer.cs">
+      <DependentUpon>201804230112216_InitalModel1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804230125496_InitialModel1.cs" />
+    <Compile Include="Migrations\201804230125496_InitialModel1.Designer.cs">
+      <DependentUpon>201804230125496_InitialModel1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804231432086_InitialModel2.cs" />
+    <Compile Include="Migrations\201804231432086_InitialModel2.Designer.cs">
+      <DependentUpon>201804231432086_InitialModel2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804231528033_InitialModel3.cs" />
+    <Compile Include="Migrations\201804231528033_InitialModel3.Designer.cs">
+      <DependentUpon>201804231528033_InitialModel3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
+    <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\FoodTruck.cs" />
     <Compile Include="Models\FullMenu.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -271,18 +293,23 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MenuItem.cs" />
     <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderClientJunction.cs" />
     <Compile Include="Models\UserInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Secrets\Keys.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CreateFoodTruckViewModel.cs" />
     <Compile Include="ViewModels\EditUserInfoViewModel.cs" />
+    <Compile Include="ViewModels\FoodTruckDetailsViewModel.cs" />
     <Compile Include="ViewModels\FoodTruckIndex.cs" />
     <Compile Include="ViewModels\MapViewModel.cs" />
     <Compile Include="ViewModels\MenuCreationViewModel.cs" />
     <Compile Include="ViewModels\MenuItemViewModel.cs" />
     <Compile Include="ViewModels\MenusViewModel.cs" />
+    <Compile Include="ViewModels\MyFoodTrucksViewModel.cs" />
     <Compile Include="ViewModels\OrdersViewModel.cs" />
+    <Compile Include="ViewModels\ReceiptViewModel.cs" />
+    <Compile Include="ViewModels\SeeAllOrdersViewModel.cs" />
     <Compile Include="ViewModels\SingleMenuViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -577,10 +604,18 @@
     <Content Include="Views\Clients\PlaceOrder.cshtml" />
     <Content Include="Views\Clients\OrderConfirmation.cshtml" />
     <Content Include="Views\Clients\EditUserInfo.cshtml" />
+    <Content Include="Views\Clients\AddFirstItemToCart.cshtml" />
+    <Content Include="Views\Clients\Receipt.cshtml" />
+    <Content Include="Views\Shared\_NavBar.cshtml" />
+    <Content Include="Views\Shared\_FoodTruckAdminNavbar.cshtml" />
+    <Content Include="Views\Shared\_ClientNavBar.cshtml" />
+    <Content Include="Views\Shared\_GuestNavbar.cshtml" />
+    <Content Include="Views\Clients\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Admin\" />
+    <Folder Include="Views\Emails\" />
     <Folder Include="Views\SMS\" />
   </ItemGroup>
   <ItemGroup>
@@ -601,6 +636,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804191526510_SeedOrders.resx">
       <DependentUpon>201804191526510_SeedOrders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804230049138_InitalModel.resx">
+      <DependentUpon>201804230049138_InitalModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804230112216_InitalModel1.resx">
+      <DependentUpon>201804230112216_InitalModel1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804230125496_InitialModel1.resx">
+      <DependentUpon>201804230125496_InitialModel1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804231432086_InitialModel2.resx">
+      <DependentUpon>201804231432086_InitialModel2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804231528033_InitialModel3.resx">
+      <DependentUpon>201804231528033_InitialModel3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,80 +1,93 @@
 ﻿@model FoodTruckPlus.ViewModels.OrdersViewModel
 @{
-    /**/
-
-    ViewBag.Title = "PlaceOrder";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+          
+   ViewBag.Title = "PlaceOrder";
+ Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Place An Order</h2>
 
 
-@using (Html.BeginForm("AddToCart", "Clients", new { id = "order" }))
+@using (Html.BeginForm("AddToCart", "Clients"))
 {
     <div class="form-group">
 
 
-        @Html.DropDownListFor(Model => Model.TemporaryItemId, new SelectList(Model.MenuItems, "Id", "ItemName"), "Select Menu Item", new { @class = "form-control" } )
+ @Html.DropDownListFor(Model => Model.TemporaryItemId, new SelectList(Model.MenuItems, "Id", "ItemName"), "Select Menu Item", new { @class = "form-control" })
     </div>
-    @Html.HiddenFor(Model => Model.Order)
+   
     @Html.HiddenFor(Model => Model.MenuItems)
     @Html.HiddenFor(Model => Model.Cart)
-    @Html.HiddenFor(Model => Model.FirstName)
-    @Html.HiddenFor(Model => Model.LastName)
+    @Html.HiddenFor(Model => Model.UserInfoId)
+   
 
-    <button type="submit" class="btn btn=primary" id="placeorder">Place Order</button>
+
+    <button type="submit" class="btn btn=primary" id="addtocart">Add to Cart</button>
 }
 
 @if (Model.Cart.Count >= 1)
 {
 
     <h2>My Cart</h2>
-<table class="table table-bordered table-hover">
-    <thead> 
-        <tr>
-            <th>Menu Item</th>
-            <th>Price</th>
-        
-        </tr>
-    </thead>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Menu Item</th>
+                <th>Price</th>
 
-    <tbody>
-        @foreach (var menuItem in Model.Cart)
-        {
-        <tr>
-            <td>
-                @menuItem.ItemName
+            </tr>
+        </thead>
 
-            </td>
-            <td>@String.Format("{0:C}", menuItem.Price)</td>
-        </tr>
+        <tbody>
+            @foreach (var menuItem in Model.Cart)
+            {
+                <tr>
+                    <td>
+                        @menuItem.ItemName
 
-        }
-  
-    </tbody>
-</table>
+                    </td>
+                    <td>@String.Format("{0:C}", menuItem.Price)</td>
+                </tr>
+
+            }
+
+        </tbody>
+    </table>
+
+
 }
-@*<script>
 
-    $(document).ready(function () {
-        var currentDate = Date.now();
-        //function will be called on button click having id btnsave
-        $("#placeorder").click(function () {
-            $.ajax(
-                {
-                    type: "POST", //HTTP POST Method
-                    url: "/api/orders", // Controller/View
-                    data: { //Passing data
+@using (Html.BeginForm("SubmitCart", "Clients", new { viewModel = Model })){
 
-                        price: $("#txtName").val(), //Reading text box values using Jquery
-                        City: $("#txtAddress").val(),
-                        Address: $("#txtcity").val()
-                    }
+    <div class="form-group">
+        @Html.TextBoxFor(Model => Model.TimeDesiredReady, new { @type = "datetime-local" })
+    </div>
 
-                });
+<button type="submit" class="btn btn=primary" id="placeorder">Place Order</button>
+}
 
+
+
+
+
+@*$(document).ready(function () {
+            var currentDate = Date.now();        //function will be called on button click having id btnsave
+            $("#placeorder").click(function () {
+                $.ajax(
+                    {
+                        type: "POST", //HTTP POST Method
+                        url: "/api/orders", // Controller/View
+                        data: { //Passing data
+
+                            price: $("#txtName").val(), //Reading text box values using Jquery
+                            City: $("#txtAddress").val(),
+                            Address: $("#txtcity").val()
+                        }
+
+                    });
+
+            });
         });
-    });
 
-</script>*@
+    </script>*@
 

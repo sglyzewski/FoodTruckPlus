@@ -9,12 +9,13 @@ using FoodTruckPlus.Dtos;
 using FoodTruckPlus.Controllers.Api;
 using AutoMapper;
 using System.Net.Http;
-using System.Web.Http;
 
+using Microsoft.AspNet.Identity;
 using System.Web.Routing;
 
 namespace FoodTruckPlus.Controllers
 {
+   
     public class OperationsController : Controller
     {
 
@@ -29,7 +30,15 @@ namespace FoodTruckPlus.Controllers
         {
             return View();
         }
+        public ActionResult FoodTruckDetails()
+        {
 
+            var controller = new MapsController();
+            var viewModel = controller.Map(5);
+            return View("FoodTruckDetails", viewModel);
+        }
+
+        [Authorize(Roles = "FoodTruckAdmin")]
         public ActionResult CreateNewFoodTruck()
         {
 
@@ -45,12 +54,22 @@ namespace FoodTruckPlus.Controllers
             return View("CreateNewFoodTruck", viewModel);
         }
 
+        [Authorize(Roles = "FoodTruckAdmin")]
         public ActionResult Orders()
         {
             var controller = new OrdersController();
-            var viewmodel = controller.GetOrders().ToList();
-            return View("Orders", viewmodel);
+            var orders = controller.GetOrders().ToList();
+            var userInfos = _context.UserInfoes.ToList();
+            var viewModel = new SeeAllOrdersViewModel()
+            {
+                Orders = orders,
+                UserInfos = userInfos
+            };
+
+            return View("Orders", viewModel);
         }
+
+        [Authorize(Roles = "FoodTruckAdmin")]
         public ActionResult CreateFoodTruck(CreateFoodTruckViewModel viewModel)
         {
           

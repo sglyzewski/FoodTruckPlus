@@ -30,6 +30,7 @@ namespace FoodTruckPlus.Models
         public DbSet<Order> Orders { get; set; }
 
         public DbSet<UserInfo> UserInfoes { get; set; }
+        public DbSet<Cart> Carts { get; set; }
         public DbSet<Ingredient> Ingredients { get; set; }
         public DbSet<FullMenu> FullMenus { get; set; }
         public ApplicationDbContext()

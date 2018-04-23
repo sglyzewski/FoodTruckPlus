@@ -18,6 +18,11 @@ namespace FoodTruckPlus.Dtos
         public DateTime TimeDesiredReady { get; set; }
         public string MenuItems { get; set; }
         public int? MinutesUntilReady {get; set;}
+        public int UserInfoId { get; set; }
+        public string Name { get; set; }
+
+
+
 
 
     }

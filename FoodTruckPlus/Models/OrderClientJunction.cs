@@ -7,13 +7,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace FoodTruckPlus.Models
 {
-    public class FullMenu
+    public class OrderClientJunction
     {
-        public int Id { get; set; }
-        [Display(Name = "Menu Title")]
-        public string MenuTitle { get; set; }
-
-        public List<MenuItem> MenuItems { get; set; }
-
     }
 }

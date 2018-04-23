@@ -1,0 +1,29 @@
+﻿@model FoodTruckPlus.ViewModels.OrdersViewModel
+@{
+               ViewBag.Title = "AddFirstItemToCart";
+               Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Place An Order</h2>
+
+
+@using (Html.BeginForm("AddToCart", "Clients"))
+{
+    <div class="form-group">
+
+
+        @Html.DropDownListFor(Model => Model.TemporaryItemId, new SelectList(Model.MenuItems, "Id", "ItemName"), "Select Menu Item", new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+      
+      
+       @Html.HiddenFor(Model => Model.MenuItems)
+        @Html.HiddenFor(Model => Model.Cart)
+        @Html.HiddenFor(Model => Model.UserInfoId)
+    </div>
+
+
+
+    <button type="submit" class="btn btn=primary" id="addtocart">Add to Cart</button>
+}

@@ -1,0 +1,30 @@
+﻿<div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink("FoodTruckPlus", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                @if (User.IsInRole("FoodTruckAdmin"))
+                {
+                    @Html.Partial("~/Views/Shared/_FoodTruckAdminNavbar.cshtml")
+                }
+               
+                else if (Request.IsAuthenticated)
+                {
+                    @Html.Partial("~/Views/Shared/_ClientNavbar.cshtml")
+                }
+                else
+                {
+                    @Html.Partial("~/Views/Shared/_GuestNavbar.cshtml")
+                }
+            </ul>
+            @Html.Partial("_LoginPartial")
+        </div>
+    </div>
+</div>

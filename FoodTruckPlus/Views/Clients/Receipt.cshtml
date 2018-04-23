@@ -1,0 +1,51 @@
+﻿@model FoodTruckPlus.ViewModels.ReceiptViewModel
+@{
+    ViewBag.Title = "Receipt";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+    <h2>My Cart</h2>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Menu Item</th>
+                <th>Price</th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var menuItem in Model.Cart)
+            {
+                <tr>
+                    <td>
+                        @menuItem.ItemName
+
+                    </td>
+                    <td>@String.Format("{0:C}", menuItem.Price)</td>
+                </tr>
+
+            }
+
+        </tbody>
+    </table>
+    <h3>Total: @String.Format("{0:C}", Model.Total)</h3>
+
+
+    <form action="SubmitAndEmail" method="POST">
+        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
+                data-amount=@Model.TotalString
+                data-name="Stripe.com"
+                data-description="Widget"
+                data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                data-locale="auto"
+                data-zip-code="true">
+        </script>
+    </form>
+
+
+

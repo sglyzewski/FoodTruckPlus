@@ -63,17 +63,18 @@ namespace FoodTruckPlus.Controllers
             var ViewModel = new MapViewModel()
             {
                 Latitude = latitude,
-                Longitude = longitude
+                Longitude = longitude,
+                Address = addressString
             };
 
             return ViewModel;
         }
 
-        public ActionResult Map(int id)
+        public MapViewModel Map(int id)
         {
             var address = _context.Addresses.SingleOrDefault(a => a.Id == id);
             var viewModel = GetMap(address);
-            return View("Map", viewModel);
+            return viewModel;
         }
     }
 }
